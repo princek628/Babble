@@ -22,9 +22,7 @@ import com.famoussoft.libs.JSON.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by peekay on 2/7/17.
- */
+
 
 public class SignupActivity extends AppCompatActivity {
    private EditText etEmail,etName,etUser,etPass;
@@ -45,7 +43,15 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(SignupActivity.this,"Registration will be available later...",Toast.LENGTH_LONG).show();
-                submitform();
+                String name=etName.getText().toString();
+                String uid=etUser.getText().toString();
+                String pwd=etPass.getText().toString();
+                String email=etEmail.getText().toString();
+                if(!name.equals("") && !uid.equals("") && !pwd.equals("") && !email.equals("")) {
+                    registerUser(name, uid, pwd, email);
+                }else{
+                    Toast.makeText(SignupActivity.this,"Please enter all the fields to Register...",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -56,11 +62,6 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(signInIntent);
             }
         });
-    }
-
-    private void submitform(){
-        registerUser(etName.getText().toString(),etUser.getText().toString(),etPass.getText().toString(),
-                etEmail.getText().toString());
     }
 
     private void registerUser(final String name, final String uid, final String password, final String email){

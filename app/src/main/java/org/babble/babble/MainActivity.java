@@ -42,7 +42,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                loginUser(etUser.getText().toString(),etPass.getText().toString());
+                String uid=etUser.getText().toString();
+                String pwd=etPass.getText().toString();
+                if(!uid.equals("") && !pwd.equals("")) {
+                    loginUser(uid,pwd);
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Empty credentials, Please fill both...",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -78,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                                 finish();
                             }
                             else{
-                                Toast.makeText(MainActivity.this,"Failed to Login!! Try Again...",Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this,"Wrong Credentials entered!! Try Again...",Toast.LENGTH_LONG).show();
                             }
                             //tvResponse.setText(Html.fromHtml(jobj.getString("status")+"<br/>"+jobj.getString("name")));
                         }catch (Exception e){
