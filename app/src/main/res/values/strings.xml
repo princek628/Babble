@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Babble</string>
+    <string name="Menu_Logout">Log Out</string>
+    <string name="Menu_Settings">Settings</string>
+    <string name="Menu_Signin">Sign In</string>
+    <string name="Menu_Signup">Sign Up</string>
+    <string name="Menu_Exit">Exit</string>
+    <string name="Chat">Display</string>
+</resources>
