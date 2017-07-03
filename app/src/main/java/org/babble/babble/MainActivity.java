@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etUser,etPass;
     Button btnLogin,btnRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
