@@ -193,11 +193,11 @@ public class ChatActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id==R.id.settings)
-            Toast.makeText(ChatActivity.this,"you cliccked on Settings...!",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChatActivity.this,"Settings will be available later...!",Toast.LENGTH_LONG).show();
         if(id==R.id.logOut)
-            Toast.makeText(ChatActivity.this,"you clicked on logOut...!",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChatActivity.this,"Logging you out...!",Toast.LENGTH_LONG).show();
         if(id==R.id.exit3){
-            Toast.makeText(ChatActivity.this,"you clicked on Exit...!",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChatActivity.this,"Exiting application...!",Toast.LENGTH_LONG).show();
             moveTaskToBack(true);
             android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(1);

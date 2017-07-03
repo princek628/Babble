@@ -16,91 +16,95 @@
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Name   "
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="3"/>
+
         <EditText
             android:id="@+id/etName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:hint="name"
-            android:layout_weight="2"/>
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="User Id "
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="3"/>
+
         <EditText
             android:id="@+id/etUser"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="eg: prince29"
+            android:layout_weight="1"
             android:gravity="left"
-            android:layout_weight="2"/>
+            android:hint="eg: prince29"
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email "
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="3"/>
+
         <EditText
             android:id="@+id/etEmail"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="email"
+            android:layout_weight="1"
             android:gravity="left"
-            android:layout_weight="2"/>
+            android:hint="email"
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Password"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="3"/>
+
         <EditText
             android:id="@+id/etPass"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:hint="password"
             android:inputType="textPassword"
-            android:layout_weight="2"/>
+            android:textAlignment="center" />
     </LinearLayout>
 
     <Button
@@ -122,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:textSize="20dp"
-        android:text="already registered..."/>
+        android:text="Already registered??"/>
 
     <Button
         android:id="@+id/btnLoginHere"
