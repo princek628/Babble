@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="5dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SIGN UP"
         android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:textStyle="bold"
-        android:background="#77afafba"
+        android:textColor="@color/colorPrimary"
         android:gravity="center"/>
 
     <LinearLayout
-        android:layout_marginTop="50dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -23,15 +26,20 @@
             android:text="Name   "
             android:gravity="center"
             android:textStyle="bold"
+            android:textColor="@color/colorAccent"
             android:textSize="20dp"
-            android:layout_weight="3"/>
+            android:layout_weight="2.7"/>
 
         <EditText
             android:id="@+id/etName"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:hint="name"
+            android:inputType="textLongMessage"
+            android:textColor="@color/colorPrimary"
+            android:elevation="6dp"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -46,15 +54,19 @@
             android:text="User Id "
             android:textStyle="bold"
             android:gravity="center"
+            android:textColor="@color/colorAccent"
             android:textSize="20dp"
-            android:layout_weight="3"/>
+            android:layout_weight="2.7"/>
 
         <EditText
             android:id="@+id/etUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:gravity="left"
+            android:inputType="textLongMessage"
+            android:textColor="@color/colorPrimary"
+            android:elevation="6dp"
             android:hint="eg: prince29"
             android:textAlignment="center" />
     </LinearLayout>
@@ -68,18 +80,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email "
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="20dp"
-            android:layout_weight="3"/>
+            android:layout_weight="2.7"/>
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
+            android:textColor="@color/colorPrimary"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:gravity="left"
             android:hint="email"
+            android:inputType="textLongMessage"
+            android:elevation="6dp"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -94,47 +110,62 @@
             android:text="Password"
             android:gravity="center"
             android:textStyle="bold"
+            android:textColor="@color/colorAccent"
             android:textSize="20dp"
-            android:layout_weight="3"/>
+            android:layout_weight="2.7"/>
 
         <EditText
             android:id="@+id/etPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:hint="password"
+            android:textColor="@color/colorPrimary"
+            android:elevation="6dp"
             android:inputType="textPassword"
             android:textAlignment="center" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="sign up"
-        android:layout_marginTop="10dp"
+        android:textColor="#ffff"
+        android:background="@color/colorAccent"
+        android:elevation="2dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+
         android:textSize="15dp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="4">
+        android:layout_height="wrap_content">
 
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:textSize="20dp"
-        android:text="Already registered??"/>
+        android:textSize="24dp"
+        android:text="Already registered??"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/btnLoginHere"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_margin="20dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="login here"
+        android:textColor="#ffff"
+        android:background="@color/colorAccent"
+        android:elevation="2dp"
         android:textSize="15dp" />
 
 </LinearLayout>

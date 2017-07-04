@@ -27,6 +27,7 @@ import com.android.volley.toolbox.Volley;
 import com.famoussoft.libs.JSON.JSONArray;
 import com.famoussoft.libs.JSON.JSONObject;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,14 +56,20 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                sendmsg(etmsg.getText().toString(),id);
+                String chat=etmsg.getText().toString();
+                if(!chat.equals("")) {
+                    sendmsg(chat, id);
+                }
+                else{
+                    Toast.makeText(ChatActivity.this,"Empty message,Post not sent...",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
 
     private void sendmsg(final String message, final String uid){
         RequestQueue queue = Volley.newRequestQueue(ChatActivity.this);  // this = context
-        String url = "http://api.mrasif.in/demo/gchat/send.php?userid="+uid+"&msg="+message;
+        String url = "http://api.mrasif.in/demo/gchat/send.php?userid="+uid+"&msg="+URLEncoder.encode(message);
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
                 {
@@ -74,7 +81,7 @@ public class ChatActivity extends AppCompatActivity {
                             //etUser.setText(rslt);
                             if(rslt.equals("true"))
                             {
-                                Toast.makeText(ChatActivity.this,"Message post successful...",Toast.LENGTH_LONG).show();
+                                Toast.makeText(ChatActivity.this,"Message post successful...",Toast.LENGTH_SHORT).show();
                                 Intent chatIntent=new Intent(getApplicationContext(),ChatActivity.class);
                                 chatIntent.putExtra("userid",uid);
                                 startActivity(chatIntent);
@@ -195,7 +202,11 @@ public class ChatActivity extends AppCompatActivity {
         if(id==R.id.settings)
             Toast.makeText(ChatActivity.this,"Settings will be available later...!",Toast.LENGTH_LONG).show();
         if(id==R.id.logOut)
+        {
             Toast.makeText(ChatActivity.this,"Logging you out...!",Toast.LENGTH_LONG).show();
+            Intent signintent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(signintent);
+        }
         if(id==R.id.exit3){
             Toast.makeText(ChatActivity.this,"Exiting application...!",Toast.LENGTH_LONG).show();
             moveTaskToBack(true);
