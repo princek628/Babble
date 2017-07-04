@@ -3,7 +3,7 @@ package org.babble.babble;
 /**
  * Created by piyush on 4/7/17.
  */
-
+//splash
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PixelFormat;
