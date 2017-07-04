@@ -6,4 +6,8 @@
     <string name="Menu_Signup">Sign Up</string>
     <string name="Menu_Exit">Exit</string>
     <string name="Chat">Display</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="info_title">Exit Confirmation</string>
+    <string name="info_description">Do you really want to Exit?</string>
 </resources>

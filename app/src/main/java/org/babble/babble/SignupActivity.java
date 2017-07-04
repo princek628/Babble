@@ -1,8 +1,10 @@
 package org.babble.babble;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +44,6 @@ public class SignupActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(SignupActivity.this,"Registration will be available later...",Toast.LENGTH_LONG).show();
                 String name=etName.getText().toString();
                 String uid=etUser.getText().toString();
                 String pwd=etPass.getText().toString();
@@ -60,6 +61,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent signInIntent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(signInIntent);
+                finish();
             }
         });
     }
@@ -80,14 +82,12 @@ public class SignupActivity extends AppCompatActivity {
                             {
                                 Toast.makeText(SignupActivity.this,"Registration successful...",Toast.LENGTH_LONG).show();
                                 Intent sIntent=new Intent(getApplicationContext(),MainActivity.class);
-                                sIntent.putExtra("userid",name);
                                 startActivity(sIntent);
                                 finish();
                             }
                             else{
-                                Toast.makeText(SignupActivity.this,"Failed to Register!! Try Again...",Toast.LENGTH_LONG).show();
+                                Toast.makeText(SignupActivity.this,"Failed to Register or User already exists...",Toast.LENGTH_LONG).show();
                             }
-                            //tvResponse.setText(Html.fromHtml(jobj.getString("status")+"<br/>"+jobj.getString("name")));
                         }catch (Exception e){
                             System.out.println(e.getMessage().toString());
                         }
@@ -107,12 +107,28 @@ public class SignupActivity extends AppCompatActivity {
                 //params to login url
                 Map<String, String>  params = new HashMap<String, String>();
                 //params.put("userid", name);
-                //params.put("pass", password);
-                //params.put("email",email);
                 return params;
             }
         };
         queue.add(postRequest);
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.info_title);
+        builder.setCancelable(false);
+        builder.setMessage(R.string.info_description);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        moveTaskToBack(true);
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }
+                }
+        );
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
     }
 
     @Override
@@ -131,10 +147,20 @@ public class SignupActivity extends AppCompatActivity {
             finish();
         }
         if(id==R.id.exit2){
-            Toast.makeText(SignupActivity.this,"you clicked on Exit...!",Toast.LENGTH_LONG).show();
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.info_title);
+            builder.setCancelable(false);
+            builder.setMessage(R.string.info_description);
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            moveTaskToBack(true);
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }
+                    }
+            );
+            builder.setNegativeButton(R.string.cancel, null);
+            builder.show();
         }
         return true;
     }

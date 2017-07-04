@@ -1,6 +1,8 @@
 package org.babble.babble;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -76,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             JSONObject jobj = new JSONObject(response);
                             String rslt=jobj.getString("status").toString();
-                            //etUser.setText(rslt);
                             if(rslt.equals("true"))
                             {
                                 Toast.makeText(MainActivity.this,"Login successful...",Toast.LENGTH_LONG).show();
@@ -88,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
                             else{
                                 Toast.makeText(MainActivity.this,"Wrong Credentials entered!! Try Again...",Toast.LENGTH_LONG).show();
                             }
-                            //tvResponse.setText(Html.fromHtml(jobj.getString("status")+"<br/>"+jobj.getString("name")));
                         }catch (Exception e){
                             System.out.println(e.getMessage().toString());
                         }
@@ -119,6 +119,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.info_title);
+        builder.setCancelable(false);
+        builder.setMessage(R.string.info_description);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        moveTaskToBack(true);
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }
+                }
+        );
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
+    }
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_signin, menu);
         return true;
@@ -133,10 +152,20 @@ public class MainActivity extends AppCompatActivity {
             startActivity(signUpIntent);
         }
         if(id==R.id.exit1){
-            Toast.makeText(MainActivity.this,"you clicked on Exit...!",Toast.LENGTH_LONG).show();
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.info_title);
+            builder.setCancelable(false);
+            builder.setMessage(R.string.info_description);
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            moveTaskToBack(true);
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }
+                    }
+            );
+            builder.setNegativeButton(R.string.cancel, null);
+            builder.show();
         }
         return true;
     }

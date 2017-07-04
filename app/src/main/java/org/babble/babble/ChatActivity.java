@@ -1,10 +1,13 @@
 package org.babble.babble;
 
 import android.app.DownloadManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,11 +34,6 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-
-
-/**
- * Created by peekay on 2/7/17.
- */
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -177,17 +175,33 @@ public class ChatActivity extends AppCompatActivity {
             TextView tvTitle = new TextView(this);
             tvTitle.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            tvTitle.setText(uid+" : "+msg);
+            tvTitle.setText(Html.fromHtml("<b>"+uid+"</b>"+" : "+msg));
             tvTitle.setTextColor(Color.BLACK);
 
             sll.addView(tvTitle);
-            //sll.addView(tvDate);
 
             ll.addView(sll);
             mainLayout.addView(ll);
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.info_title);
+        builder.setCancelable(false);
+        builder.setMessage(R.string.info_description);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        moveTaskToBack(true);
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }
+                }
+        );
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
+    }
 
 
     @Override
@@ -208,10 +222,21 @@ public class ChatActivity extends AppCompatActivity {
             startActivity(signintent);
         }
         if(id==R.id.exit3){
-            Toast.makeText(ChatActivity.this,"Exiting application...!",Toast.LENGTH_LONG).show();
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
+            //Toast.makeText(ChatActivity.this,"Exiting application...!",Toast.LENGTH_LONG).show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.info_title);
+            builder.setCancelable(false);
+            builder.setMessage(R.string.info_description);
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            moveTaskToBack(true);
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }
+            }
+            );
+            builder.setNegativeButton(R.string.cancel, null);
+            builder.show();
         }
         return true;
     }
