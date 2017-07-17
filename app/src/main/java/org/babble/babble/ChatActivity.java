@@ -170,12 +170,12 @@ public class ChatActivity extends AppCompatActivity {
             sll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             sll.setPadding(5, 5, 5, 5);
             sll.setOrientation(LinearLayout.VERTICAL);
-            sll.setBackgroundColor(Color.WHITE);
+            //sll.setBackgroundColor(Color.WHITE);
 
             TextView tvTitle = new TextView(this);
             tvTitle.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            tvTitle.setText(Html.fromHtml("<b>"+uid+"</b>"+" : "+msg));
+            tvTitle.setText(Html.fromHtml("<b><i>"+uid+"</i></b>"+" : "+msg));
             tvTitle.setTextColor(Color.BLACK);
 
             sll.addView(tvTitle);
