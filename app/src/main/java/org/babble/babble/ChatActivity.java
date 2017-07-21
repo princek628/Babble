@@ -67,7 +67,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private void sendmsg(final String message, final String uid){
         RequestQueue queue = Volley.newRequestQueue(ChatActivity.this);  // this = context
-        String url = "http://api.mrasif.in/demo/gchat/send.php?userid="+uid+"&msg="+URLEncoder.encode(message);
+        String url = "http://api.mrasif.in/demo/gchat/send.php?";
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
                 {
@@ -104,7 +104,8 @@ public class ChatActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                //params
+                params.put("userid",uid);
+                params.put("msg",URLEncoder.encode(message));
                 return params;
             }
         };

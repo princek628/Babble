@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private void loginUser( final String email, final String password){
 
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);  // this = context
-        String url = "http://api.mrasif.in/demo/gchat/login.php?userid="+email+"&pass="+password;
+        String url = "http://api.mrasif.in/demo/gchat/login.php?";
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
                 {
@@ -107,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
             {
                 //params to login url
                 Map<String, String>  params = new HashMap<String, String>();
-                //params.put("userid"email, );
-                //params.put("pass",password )    ;
+                params.put("userid",email);
+                params.put("pass",password);
                 return params;
             }
         };
